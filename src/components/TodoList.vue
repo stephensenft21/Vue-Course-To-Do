@@ -1,13 +1,15 @@
 <template>
-  <div>
-    <h3>ToDo List</h3>
-    
+  <div >
+    <v-banner>ToDo List
     <h5 v-if="itemsRemaining > 1 ">There are {{ itemsRemaining}} items left to do today</h5>
-    <h5 v-else-if="itemsRemaining < 2 && itemsRemaining === 1">There is {{ itemsRemaining}} item left to do today</h5>
+    <h5 v-else-if="itemsRemaining < 2 && itemsRemaining === 1">There is {{ itemsRemaining}} item left to complete today</h5>
     <h5 v-else-if="itemsRemaining === 0 ">No More items left to do today!!!</h5>
-    <div v-for="item in todos" :key="item.id">
-      <todo-item :todo="item" @status-change="handleStatusChange" />
+    </v-banner>
+    <v-card class="todo-items">
+    <div  v-for="item in todos" :key="item.id">
+      <todo-item  :todo="item" @status-change="handleStatusChange" />
     </div>
+    </v-card>
   </div>
 </template>
 
@@ -42,4 +44,16 @@ export default {
 
 <style>
 
+
+.todo-items {
+  display: flex;
+align-items: center;
+flex-direction: column;
+margin-left: 100px;
+margin-right: 100px;
+padding-left: 20px;
+padding-right: 20px;
+
+
+}
 </style>
